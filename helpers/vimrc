@@ -17,6 +17,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-fugitive'
+Bundle 'Raimondi/delimitMate'
 
 filetype plugin indent on
 "
@@ -32,7 +33,6 @@ filetype plugin indent on
 
 " Settings
 
-set nocompatibyyle
 set history=500
 
 " Enable filetype plugins
@@ -41,7 +41,6 @@ filetype indent on
 
 set autoread
 set number
-set encoding=utf8
 
 set mouse=a
 set selection=exclusive
