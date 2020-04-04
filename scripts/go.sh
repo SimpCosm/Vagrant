@@ -1,12 +1,5 @@
 #!/usr/bin/env bash
 
-# check if a go version is set
-if [[ -z $1 ]]; then
-        GO_VERSION="latest"
-else
-        GO_VERSION=$1
-fi
-
 GO_HOME=/home/vagrant/software
 # install golang
 mkdir -p $GO_HOME

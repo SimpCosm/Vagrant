@@ -1,4 +1,9 @@
-# install conda
+#!/usr/bin/env bash
+
+USER_HOME=/home/vagrant
+CONDA_HOME=$USER_HOME
+PYTHON_VERSION=$1
+
 if [ ! -d $CONDA_HOME ]; then
     curl -sS -o /tmp/conda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash /tmp/conda.sh -b -p $CONDA_HOME

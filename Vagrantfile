@@ -10,6 +10,8 @@ github_url      = "https://raw.githubusercontent.com/#{github_username}/#{github
 vboxname        = "ubuntu/xenial64"
 hostname        = "cosmos"
 
+go_version      = "1.10.3"
+
 # Set a local private network IP address.
 # See http://en.wikipedia.org/wiki/Private_network for explanation
 # You can use the following IP ranges:
@@ -44,7 +46,7 @@ Vagrant.configure("2") do |config|
   end
 
   # shared folder
-  config.vm.synced_folder "../data", "/home/vagrant/workspace"
+  config.vm.synced_folder "./data", "/home/vagrant/workspace"
 
   # Enable agent forwarding over SSH connections
   config.ssh.forward_agent = true
@@ -83,9 +85,9 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "#{github_url}/scripts/docker.sh", args: "permissions"
 
   # Install Python
-  # config.vm.provision "shell", path: "#{github_url}/scripts/python.sh", privileged: false, args: [python_version]
+  config.vm.provision "shell", path: "#{github_url}/scripts/python.sh", privileged: true, args: [python_version]
 
   # Install Go Version Manager (GVM)
-  config.vm.provision "shell", path: "#{github_url}/scripts/go.sh", privileged: false, args: [go_version], privileged: true
+  config.vm.provision "shell", path: "#{github_url}/scripts/go.sh", privileged: true, args: [go_version]
 
 end
