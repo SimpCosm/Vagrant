@@ -75,10 +75,10 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "#{github_url}/scripts/base.sh", args: [github_url, server_timezone]
 
   # Provision Vim
-  # config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
+  config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
 
   # Provision Docker
-  # config.vm.provision "shell", path: "#{github_url}/scripts/docker.sh", args: "permissions"
+  config.vm.provision "shell", path: "#{github_url}/scripts/docker.sh", args: "permissions"
 
   # Install Python
   config.vm.provision "shell", path: "#{github_url}/scripts/python.sh", privileged: true, args: [python_version]
