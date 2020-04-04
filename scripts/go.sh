@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-GO_HOME=/home/vagrant/software
+USER_HOME=/home/vagrant
+GO_HOME=$USER_HOME/software
 # install golang
 mkdir -p $GO_HOME
 if [ ! -d $GO_HOME/go ]; then

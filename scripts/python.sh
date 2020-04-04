@@ -2,7 +2,7 @@
 
 set ex
 USER_HOME=/home/vagrant
-CONDA_HOME=$USER_HOME/software
+CONDA_HOME=$USER_HOME/software/conda
 PYTHON_VERSION=$1
 
 mkdir $CONDA_HOME
