@@ -17,8 +17,8 @@ hostname        = "cosmos"
 #   172.16.0.1  - 172.31.255.254
 #   192.168.0.1 - 192.168.255.254
 server_ip             = "192.168.22.10"
-server_cpus           = "1"   # Cores
-server_memory         = "384" # MB
+server_cpus           = "2"   # Cores
+server_memory         = "2048" # MB
 
 # UTC        for Universal Coordinated Time
 # EST        for Eastern Standard Time
@@ -51,9 +51,6 @@ Vagrant.configure("2") do |config|
 
   # If using VirtualBox
   config.vm.provider "virtualbox" do |vb|
-    vb.name = hostname
-    vb.gui = false
-
     vb.customize ["modifyvm", :id, "--cpus", server_cpus]
     vb.customize ["modifyvm", :id, "--memory", server_memory]
 
@@ -89,6 +86,6 @@ Vagrant.configure("2") do |config|
   # config.vm.provision "shell", path: "#{github_url}/scripts/python.sh", privileged: false, args: [python_version]
 
   # Install Go Version Manager (GVM)
-  # config.vm.provision "shell", path: "#{github_url}/scripts/go.sh", privileged: false, args: [go_version]
+  config.vm.provision "shell", path: "#{github_url}/scripts/go.sh", privileged: false, args: [go_version], privileged: true
 
 end

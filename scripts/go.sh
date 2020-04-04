@@ -7,7 +7,7 @@ else
         GO_VERSION=$1
 fi
 
-GO_HOME=$USER_HOME/software
+GO_HOME=/home/vagrant/software
 # install golang
 mkdir -p $GO_HOME
 if [ ! -d $GO_HOME/go ]; then
