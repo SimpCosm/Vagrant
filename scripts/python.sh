@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+set ex
 USER_HOME=/home/vagrant
-CONDA_HOME=$USER_HOME
+CONDA_HOME=$USER_HOME/software
 PYTHON_VERSION=$1
 
+mkdir $CONDA_HOME
 if [ ! -d $CONDA_HOME ]; then
     curl -sS -o /tmp/conda.sh https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
     bash /tmp/conda.sh -b -p $CONDA_HOME
@@ -18,5 +20,5 @@ echo '[global]' | tee $USER_HOME/.pip/pip.conf /root/.pip/pip.conf
 echo 'trusted-host = mirrors.aliyun.com' | tee --append $USER_HOME/.pip/pip.conf /root/.pip/pip.conf
 echo 'index-url = https://mirrors.aliyun.com/pypi/simple' | tee --append $USER_HOME/.pip/pip.conf /root/.pip/pip.conf
 chown -R vagrant: $USER_HOME/.pip
-$CONDA_HOME/bin/pip install --no-cache-dir --default-timeout=120 ipython glances mycli tqdm pymysql mysqlclient fabric argparse pyyaml
+$CONDA_HOME/bin/pip install --no-cache-dir --default-timeout=120 ipython glances mycli tqdm fabric argparse pyyaml
 chown -R vagrant: $CONDA_HOME

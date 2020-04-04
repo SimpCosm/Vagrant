@@ -11,6 +11,7 @@ vboxname        = "ubuntu/xenial64"
 hostname        = "cosmos"
 
 go_version      = "1.10.3"
+python_version  = "3.6.6"
 
 # Set a local private network IP address.
 # See http://en.wikipedia.org/wiki/Private_network for explanation
@@ -37,13 +38,8 @@ Vagrant.configure("2") do |config|
   config.vm.box = vboxname
   config.vm.hostname = hostname
 
-  # Create a static IP
-  if Vagrant.has_plugin?("vagrant-auto_network")
-    config.vm.network :private_network, :ip => "0.0.0.0", :auto_network => true
-  else
-    config.vm.network :private_network, ip: server_ip
-    config.vm.network :forwarded_port, guest: 80, host: 8000
-  end
+  # create static ip
+  config.vm.network :private_network, ip: server_ip
 
   # shared folder
   config.vm.synced_folder "./data", "/home/vagrant/workspace"
@@ -79,7 +75,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", path: "#{github_url}/scripts/base.sh", args: [github_url, server_timezone]
 
   # Provision Vim
-  config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
+  # config.vm.provision "shell", path: "#{github_url}/scripts/vim.sh", args: github_url
 
   # Provision Docker
   # config.vm.provision "shell", path: "#{github_url}/scripts/docker.sh", args: "permissions"
