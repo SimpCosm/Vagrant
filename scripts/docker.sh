@@ -24,18 +24,20 @@ if [ ! -z "$1" ]; then
 fi # arg check
 
 # aliyun speed up docker image download
-mkdir -p /etc/docker
-echo "{" > /etc/docker/daemon.json
-echo '  "registry-mirrors": ["https://ht6aappv.mirror.aliyuncs.com"]' >> /etc/docker/daemon.json
-echo "}" >> /etc/docker/daemon.json
-systemctl daemon-reload
-systemctl restart docker
+sudo mkdir -p /etc/docker
+#sudo curl --silent -L $github_url/helpers/docker.json > /etc/docker/daemon.json
+sudo echo "{" > /etc/docker/daemon.json
+sudo echo '  "registry-mirrors": ["https://ht6aappv.mirror.aliyuncs.com"]' >> /etc/docker/daemon.json
+sudo echo "}" >> /etc/docker/daemon.json
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
 # install docker-compose
 DOCKER_COMPOSE=/usr/local/bin/docker-compose
 if [ ! -f $DOCKER_COMPOSE ]; then
-    curl -sSL -o $DOCKER_COMPOSE https://code.aliyun.com/k9kdqvbb/files/raw/master/docker-compose-Linux-x86_64
-    chmod +x $DOCKER_COMPOSE 
+    sudo curl -sSL -o $DOCKER_COMPOSE https://code.aliyun.com/k9kdqvbb/files/raw/master/docker-compose-Linux-x86_64
+    sudo chmod +x $DOCKER_COMPOSE 
 fi
 # clean
-apt-get autoremove -yqq --purge
-apt-get clean && apt-get autoclean
+sudo apt-get autoremove -yqq --purge
+sudo apt-get clean && apt-get autoclean

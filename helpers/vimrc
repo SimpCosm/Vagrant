@@ -31,21 +31,64 @@ filetype plugin indent on
 
 
 " Settings
+
+set nocompatibyyle
+set history=500
+
+" Enable filetype plugins
+filetype plugin on
+filetype indent on
+
+set autoread
 set number
+set encoding=utf8
+
+set mouse=a
+set selection=exclusive
+set selectmode=mouse,key
+
+set cursorline
+set cursorcolumn
+
 syntax enable
 set background=dark
 colorscheme solarized
 
-" Yep, spaces
-set smartindent
-set tabstop=4
-set shiftwidth=4
+" :W sudo saves the file
+" (useful for handling the permission-denied error)
+command W w !sudo tee % > /dev/null
+
+" Use spaces instead of tabs
 set expandtab
+set smarttab
+
+" 1 tab == 4 spaces
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+
+" enable auto indentation
+set autoindent
+set smartindent
 
 " No error noise on
 " bad key-strokes, etc
 set visualbell
 set noerrorbells
+
+" Lines longer than the width of the window will wrap
+set wrap
+set linebreak
+set textwidth=500
+
+" Highlight search results
+set hlsearch
+set incsearch
+
+" Show matching brackets when text indicator is over them
+set showmatch
+" How many tenths of a second to blink when matching brackets
+set matchtime=2
 
 " Change backup and swap dirs
 " So these files don't appear in
