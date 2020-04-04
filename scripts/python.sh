@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-set ex
 USER_HOME=/home/vagrant
 CONDA_HOME=$USER_HOME/software/conda
 PYTHON_VERSION=$1
